@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Zodiac Horoscope App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание
 
-## Available Scripts
+Это мини-приложение для Telegram, которое предоставляет ежедневные гороскопы для знаков зодиака. Пользователи могут переключать язык между английским и русским, чтобы получать описания на предпочитаемом языке.
 
-In the project directory, you can run:
+## Установка
 
-### `npm start`
+Для локальной установки выполните следующие шаги:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/eugeny11/My_Horoscope_Task
+   ```
+2. Перейдите в директорию проекта:
+   ```bash
+   cd REPOSITORY_NAME
+   ```
+3. Установите зависимости:
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Запуск
 
-### `npm test`
+Для запуска проекта на локальной машине выполните:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm start
+```
 
-### `npm run build`
+Приложение будет доступно по адресу `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Технологии
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React
+- Vercel (для деплоя)
+- Fetch API для получения данных
+- Telegram Mini App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Сборка и развертывание на Vercel
 
-### `npm run eject`
+### Шаг 1: Сборка проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Выполните команду для сборки проекта:
+   ```bash
+   npm run build
+   ```
+2. После успешной сборки, папка `build` будет содержать готовую к развертыванию версию приложения.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Шаг 2: Регистрация на Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Перейдите на [Vercel](https://vercel.com/) и зарегистрируйтесь, если у вас ещё нет аккаунта.
+2. После регистрации войдите в систему и перейдите на свою панель управления.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Шаг 3: Подключение к GitHub
 
-## Learn More
+1. В панели управления Vercel выберите "New Project".
+2. Выберите репозиторий вашего проекта из GitHub.
+3. Следуйте инструкциям для авторизации Vercel с вашим аккаунтом GitHub.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Шаг 4: Настройка развертывания
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Vercel автоматически обнаружит ваш проект как React-приложение и предложит настройки по умолчанию.
+2. Вы можете настроить имя проекта, окружение, и другие параметры.
+3. Нажмите кнопку "Deploy", чтобы начать процесс развертывания.
 
-### Code Splitting
+### Шаг 5: Завершение развертывания
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. После завершения развертывания, Vercel предоставит вам ссылку на развернутое приложение.
+2. Вы можете использовать эту ссылку для доступа к вашему приложению и поделиться ею с другими.
 
-### Analyzing the Bundle Size
+## Использование
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Выберите знак зодиака, чтобы получить ежедневный гороскоп. Переключайте язык приложения для отображения гороскопа на английском или русском языках.
 
-### Making a Progressive Web App
+## Ссылка на развернутое приложение
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[Zodiac Horoscope App on Vercel]([#](https://my-horoscope-task.vercel.app))
 
-### Advanced Configuration
+## Контакты
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Если у вас есть вопросы или предложения, свяжитесь со мной через [Email](eugenygrannus@aol.com).
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Теперь у вас есть подробные инструкции по сборке и развертыванию проекта на Vercel прямо в описании репозитория.
