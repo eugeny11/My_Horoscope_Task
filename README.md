@@ -76,7 +76,7 @@ npm start
 
 ## Ссылка на развернутое приложение
 
-[Zodiac Horoscope App on Vercel](#)
+[Zodiac Horoscope App on Vercel]([#](https://my-horoscope-task.vercel.app))
 
 ## Контакты
 
