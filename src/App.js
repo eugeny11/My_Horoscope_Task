@@ -24,6 +24,15 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    fetch(
+      `https://api.telegram.org/bot7256692018:AAHdf-x6-u5Y4iCvzGc6VdgP6cJX46uFN_A/getUpdates`
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
