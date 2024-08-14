@@ -9,6 +9,7 @@ export default async function handler(req, res) {
         const chatId = message.chat.id;
         const token = process.env.TELEGRAM_BOT_TOKEN;
         const url = "https://my-horoscope-task.vercel.app";
+        const stopUrl = "https://your-stop-url.com"; // Замените на нужный вам URL
 
         const postData = (text, replyMarkup) =>
           JSON.stringify({
@@ -75,7 +76,23 @@ export default async function handler(req, res) {
         } else if (message.text === "/stop") {
           console.log("Stop command received");
 
-          const data = await sendMessage("Work has been stopped. Goodbye!");
+          const replyMarkup = {
+            reply_markup: {
+              inline_keyboard: [
+                [
+                  {
+                    text: "Goodbye",
+                    url: stopUrl,
+                  },
+                ],
+              ],
+            },
+          };
+
+          const data = await sendMessage(
+            "Work has been stopped. Click below to end:",
+            replyMarkup
+          );
           console.log("Stop message sent successfully:", data);
           res.status(200).json(data);
         } else {

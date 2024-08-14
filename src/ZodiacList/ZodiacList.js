@@ -7,8 +7,27 @@ const ZodiacList = ({ language }) => {
   const [selectedSign, setSelectedSign] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [description, setDescription] = useState(null);
+  const [zodiacData, setZodiacData] = useState(
+    language === "ru" ? zodiacDataRu : zodiacDataEn
+  );
 
-  const zodiacData = language === "ru" ? zodiacDataRu : zodiacDataEn;
+  // Update zodiacData when language changes
+  useEffect(() => {
+    setZodiacData(language === "ru" ? zodiacDataRu : zodiacDataEn);
+  }, [language]);
+
+  // Update selectedSign name when zodiacData or selectedSign changes
+  useEffect(() => {
+    if (selectedSign) {
+      const updatedSign = zodiacData.find(
+        (sign) => sign.apiName === selectedSign.apiName
+      );
+      if (updatedSign) {
+        setSelectedSign(updatedSign);
+      }
+      fetchDescription(selectedSign);
+    }
+  }, [zodiacData, selectedSign, language]);
 
   const fetchDescription = (sign) => {
     setIsLoading(true);
@@ -40,18 +59,12 @@ const ZodiacList = ({ language }) => {
     setDescription(null);
   };
 
-  useEffect(() => {
-    if (selectedSign) {
-      fetchDescription(selectedSign);
-    }
-  }, [language, selectedSign]); // Trigger description fetch when language or selectedSign changes
-
   return (
     <div className="zodiac-list">
       {!selectedSign ? (
         zodiacData.map((sign) => (
           <div
-            key={sign.name}
+            key={sign.apiName}
             className="zodiac-item"
             onClick={() => {
               setSelectedSign(sign);

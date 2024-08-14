@@ -16,13 +16,6 @@ function App() {
     setLanguage((prevLanguage) => (prevLanguage === "en" ? "ru" : "en"));
   };
 
-  useEffect(() => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      console.log("Telegram Web App API доступен");
-    }
-  }, []);
-
   return (
     <div className="App">
       <header className="App-header">
