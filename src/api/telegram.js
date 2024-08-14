@@ -1,10 +1,12 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
+  console.log("Webhook triggered");
   if (req.method === "POST") {
     const { message } = req.body;
 
     if (message && message.text === "/start") {
+      console.log("Start command received");
       const chatId = message.chat.id;
       const token = process.env.TELEGRAM_BOT_TOKEN;
       const url = "https://my-horoscope-task.vercel.app";
@@ -40,6 +42,7 @@ export default async function handler(req, res) {
         res.status(500).send("Failed to send message");
       }
     } else {
+      console.log("Message not recognized");
       res.status(200).send("No action needed");
     }
   } else {
