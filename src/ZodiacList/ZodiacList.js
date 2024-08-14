@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 import zodiacDataEn from "./zodiacDataEn";
 import zodiacDataRu from "./zodiacDataRu";
 import "./ZodiacList.css";
@@ -57,8 +58,16 @@ const ZodiacList = ({ language }) => {
     setDescription(null);
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedRight: () => {
+      if (selectedSign) {
+        handleBack();
+      }
+    },
+  });
+
   return (
-    <div className="zodiac-list">
+    <div className="zodiac-list" {...swipeHandlers}>
       {!selectedSign ? (
         zodiacData.map((sign) => (
           <div
