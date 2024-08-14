@@ -75,22 +75,7 @@ export default async function handler(req, res) {
         } else if (message.text === "/stop") {
           console.log("Stop command received");
 
-          const replyMarkup = {
-            reply_markup: {
-              inline_keyboard: [
-                [
-                  {
-                    text: "Goodbye",
-                  },
-                ],
-              ],
-            },
-          };
-
-          const data = await sendMessage(
-            "Work has been stopped. Click below to end:",
-            replyMarkup
-          );
+          const data = await sendMessage("Work has been stopped. Goodbye!");
           console.log("Stop message sent successfully:", data);
           res.status(200).json(data);
         } else {
