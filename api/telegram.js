@@ -9,7 +9,6 @@ export default async function handler(req, res) {
         const chatId = message.chat.id;
         const token = process.env.TELEGRAM_BOT_TOKEN;
         const url = "https://my-horoscope-task.vercel.app";
-        const stopUrl = "https://your-stop-url.com"; // Замените на нужный вам URL
 
         const postData = (text, replyMarkup) =>
           JSON.stringify({
@@ -82,7 +81,6 @@ export default async function handler(req, res) {
                 [
                   {
                     text: "Goodbye",
-                    url: stopUrl,
                   },
                 ],
               ],

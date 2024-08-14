@@ -11,12 +11,10 @@ const ZodiacList = ({ language }) => {
     language === "ru" ? zodiacDataRu : zodiacDataEn
   );
 
-  // Update zodiacData when language changes
   useEffect(() => {
     setZodiacData(language === "ru" ? zodiacDataRu : zodiacDataEn);
   }, [language]);
 
-  // Update selectedSign name when zodiacData or selectedSign changes
   useEffect(() => {
     if (selectedSign) {
       const updatedSign = zodiacData.find(
@@ -68,7 +66,7 @@ const ZodiacList = ({ language }) => {
             className="zodiac-item"
             onClick={() => {
               setSelectedSign(sign);
-              fetchDescription(sign); // Fetch description when a sign is selected
+              fetchDescription(sign);
             }}
           >
             <h2>
