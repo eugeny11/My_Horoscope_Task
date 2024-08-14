@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import { request } from "https";
 
 export default async function handler(req, res) {
   console.log("Webhook triggered");
@@ -9,6 +9,46 @@ export default async function handler(req, res) {
         const chatId = message.chat.id;
         const token = process.env.TELEGRAM_BOT_TOKEN;
         const url = "https://my-horoscope-task.vercel.app";
+
+        const postData = (text, replyMarkup) =>
+          JSON.stringify({
+            chat_id: chatId,
+            text,
+            ...replyMarkup,
+          });
+
+        const sendMessage = (text, replyMarkup = null) => {
+          return new Promise((resolve, reject) => {
+            const options = {
+              hostname: "api.telegram.org",
+              path: `/bot${token}/sendMessage`,
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Content-Length": Buffer.byteLength(
+                  postData(text, replyMarkup)
+                ),
+              },
+            };
+
+            const req = request(options, (response) => {
+              let data = "";
+              response.on("data", (chunk) => {
+                data += chunk;
+              });
+              response.on("end", () => {
+                resolve(JSON.parse(data));
+              });
+            });
+
+            req.on("error", (error) => {
+              reject(error);
+            });
+
+            req.write(postData(text, replyMarkup));
+            req.end();
+          });
+        };
 
         if (message.text === "/start") {
           console.log("Start command received");
@@ -26,40 +66,16 @@ export default async function handler(req, res) {
             },
           };
 
-          const response = await fetch(
-            `https://api.telegram.org/bot${token}/sendMessage`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                chat_id: chatId,
-                text: "Welcome! Click below to open the horoscope app:",
-                ...replyMarkup,
-              }),
-            }
+          const data = await sendMessage(
+            "Welcome! Click below to open the horoscope app:",
+            replyMarkup
           );
-          const data = await response.json();
           console.log("Message sent successfully:", data);
           res.status(200).json(data);
         } else if (message.text === "/stop") {
           console.log("Stop command received");
 
-          const response = await fetch(
-            `https://api.telegram.org/bot${token}/sendMessage`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                chat_id: chatId,
-                text: "Work has been stopped. Goodbye!",
-              }),
-            }
-          );
-          const data = await response.json();
+          const data = await sendMessage("Work has been stopped. Goodbye!");
           console.log("Stop message sent successfully:", data);
           res.status(200).json(data);
         } else {
@@ -71,10 +87,7 @@ export default async function handler(req, res) {
         res.status(400).send("Invalid message format");
       }
     } catch (error) {
-      console.error(
-        "Error processing request:",
-        error.response?.data || error.message
-      );
+      console.error("Error processing request:", error.message);
       res.status(500).send("Failed to process request");
     }
   } else {
