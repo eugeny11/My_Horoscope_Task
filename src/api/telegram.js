@@ -23,14 +23,20 @@ export default async function handler(req, res) {
       };
 
       try {
-        await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
-          chat_id: chatId,
-          text: "Welcome! Click below to open the horoscope app:",
-          ...replyMarkup,
-        });
-        res.status(200).send("Message sent");
+        const response = await axios.post(
+          `https://api.telegram.org/bot${token}/sendMessage`,
+          {
+            chat_id: chatId,
+            text: "Welcome! Click below to open the horoscope app:",
+            ...replyMarkup,
+          }
+        );
+        res.status(200).json(response.data);
       } catch (error) {
-        console.error(error);
+        console.error(
+          "Error sending message:",
+          error.response?.data || error.message
+        );
         res.status(500).send("Failed to send message");
       }
     } else {
