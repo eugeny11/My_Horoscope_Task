@@ -19,18 +19,8 @@ function App() {
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.setHeaderColor("#ff0000");
       console.log("Telegram Web App API доступен");
     }
-  }, []);
-
-  useEffect(() => {
-    fetch(
-      `https://api.telegram.org/bot7256692018:AAHdf-x6-u5Y4iCvzGc6VdgP6cJX46uFN_A/getUpdates`
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
   }, []);
 
   return (
