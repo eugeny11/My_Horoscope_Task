@@ -52,10 +52,3 @@
 5. Deploy the app on Vercel or your preferred hosting platform.
 
 ---
-
-## 📄 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-Если у вас есть дополнительные пожелания или скриншоты, я могу внести изменения в описание! 😊
