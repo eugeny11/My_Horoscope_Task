@@ -5,6 +5,8 @@
 
 This is a mini-app for Telegram that provides daily horoscopes for zodiac signs. Users can switch between English and Russian to receive descriptions in their preferred language.
 
+![Demo Screenshot](./Screenshot_1.jpg)
+
 ## Installation
 
 To install locally, follow these steps:
