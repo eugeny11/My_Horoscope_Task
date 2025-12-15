@@ -38,7 +38,7 @@
 ## 📥 Installation
 
 1. Clone the repository and navigate to the project directory:
-   git clone https://github.com/your-username/telegram-horoscope-app.git
+   git clone https://github.com/eugeny11/telegram-horoscope-app.git
 
 2. Install dependencies:
    npm install
